@@ -13,7 +13,7 @@ RUN ["dpkg-reconfigure", "locales"]
 RUN useradd --create-home -s /bin/bash user
 WORKDIR /home/user
 USER user
-RUN make -p ~/bin && curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo && chmod a+x ~/bin/repo
-COPY --chown=user bashrc /home/user/.bashrc
+RUN mkdir -p ~/bin && curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo && chmod a+x ~/bin/repo
+COPY bashrc /home/user/.bashrc
 
 CMD ["/bin/bash"]
